@@ -1,0 +1,5 @@
+ddns:
+  regionId: cn-hangzhou
+  accessKeyId: 阿里keyId
+  secret: 阿里secret
+  domainName: 你的域名
