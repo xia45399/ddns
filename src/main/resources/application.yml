@@ -3,3 +3,4 @@ ddns:
   accessKeyId: 阿里keyId
   secret: 阿里secret
   domainName: 你的域名
+  ips: http://myip.dnsomatic.com

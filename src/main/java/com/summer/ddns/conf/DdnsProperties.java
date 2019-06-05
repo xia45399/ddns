@@ -11,6 +11,7 @@ public class DdnsProperties {
     private String accessKeyId;
     private String secret;
     private String domainName;
+    private String[] ips;
 
     public String getRegionId() {
         return regionId;
@@ -42,5 +43,13 @@ public class DdnsProperties {
 
     public void setDomainName(String domainName) {
         this.domainName = domainName;
+    }
+
+    public String[] getIps() {
+        return ips;
+    }
+
+    public void setIps(String[] ips) {
+        this.ips = ips;
     }
 }
