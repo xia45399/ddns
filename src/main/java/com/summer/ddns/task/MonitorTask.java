@@ -9,6 +9,7 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import com.summer.ddns.conf.DdnsProperties;
 import com.summer.ddns.service.IpService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Component
+@Log4j2
 public class MonitorTask {
     @Resource
     private DdnsProperties ddnsProperties;
@@ -36,17 +38,17 @@ public class MonitorTask {
     }
 
     private void initAliIp() {
-        System.out.println("开始获取云解析ip");
+        log.info("开始获取云解析ip");
         try {
             aliIp = getAliIp();
         } catch (ClientException e) {
             e.printStackTrace();
         }
-        System.out.println("获取云解析ip=" + aliIp);
+        log.info("获取云解析ip=" + aliIp);
     }
 
     private void monitor() {
-        System.out.println("执行监控服务开始");
+        log.info("执行监控服务开始");
         try {
             String localIp = ipService.getIp();
             if (!aliIp.equals(localIp)) {
@@ -57,7 +59,7 @@ public class MonitorTask {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("执行监控服务结束");
+        log.info("执行监控服务结束");
     }
 
     private String getAliIp() throws ClientException {
